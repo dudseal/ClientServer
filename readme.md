@@ -5,6 +5,7 @@
 * Once you have GitLens installed, you can click on the GitLens tab when your terminal is open (it's next to the Terminal tab)
 
 himmytimmy 
+this line of text is only on the uno branch
 ### Git Commands:
 
 ```bash
