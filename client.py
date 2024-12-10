@@ -14,7 +14,7 @@ def http_request(host, port):
 
 if __name__ == "__main__":
     if len(sys.argv) != 3:
-        print("Usage: python3 http.py <host> <port>")
+        print("Usage: python3 client.py <host> <port>")
     else:
         host = sys.argv[1]
         port = int(sys.argv[2])
