@@ -1,17 +1,15 @@
 import socket
 
+# Create a socket object
+server_socket = socket.socket()
 # Define the host and port
 HOST = socket.getfqdn()  # Localhost
 PORT = 8000  # Port to bind to
 
-# Create a socket object
-server_socket = socket.socket()
+server_socket.bind(('', PORT)) # Bind the socket to the host and port
 
-# Bind the socket to the host and port
-server_socket.bind((HOST, PORT))
-
-# Start listening for incoming connections (max 1 connection in the backlog)
-server_socket.listen(1)
+# Start listening for incoming connections (max 5 connection in the backlog)
+server_socket.listen(5)
 
 print(f"Server running on http://{HOST}:{PORT}...")
 
@@ -25,15 +23,19 @@ while True:
     # Receive the request data (max 1024 bytes)
     request_data = client_socket.recv(1024).decode('utf-8')
 
-    # Print the request (just for debugging)
-    print("Request received:")
-    print(request_data)
+    #Print the request (just for debugging)
+    #print("Request received:")
+    #print(request_data)
 
     # Simple HTTP response (an HTTP 200 OK response)
     response = """HTTP/1.1 200 OK
-Content-Type: text/plain
+Content-Type: text/html
 
-Hello, World! You have connected to the Python socket server.
+    <html>
+    <body>
+    <h1> Hello, World! </h1> You have connected to the Python socket server.
+    </body>
+    </html>
 """
 
     # Send the HTTP response to the client
