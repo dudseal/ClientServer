@@ -1,6 +1,6 @@
 # BYOC Client Server Project
 
-SERVER.PY is the file we wrote the server in, everything else is testing mess
+SERVER.PY is the file we wrote the server in, and client_test.py is for testing from the client's terminal
 
 ### Notes:
 * This file is written in markdown, which is a plain text editor with basic functions like headings.

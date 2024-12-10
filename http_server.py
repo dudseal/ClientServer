@@ -2,6 +2,8 @@ import socket
 
 def handle_client(client_socket):
     # Receive the HTTP request from the client
+    #Start the server, then type http://IP:800
+    
     request = client_socket.recv(1024).decode('utf-8')
     print(f"Request received:\n{request}")
 

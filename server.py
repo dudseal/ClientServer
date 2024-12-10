@@ -6,7 +6,7 @@ server_socket = socket.socket()
 HOST = socket.getfqdn()  # Localhost
 PORT = 8000  # Port to bind to
 
-server_socket.bind(('', PORT)) # Bind the socket to the host and port
+server_socket.bind(('0.0.0.0', PORT)) # Bind the socket to the host and port
 
 # Start listening for incoming connections (max 5 connection in the backlog)
 server_socket.listen(5)
@@ -26,16 +26,17 @@ while True:
     #Print the request (just for debugging)
     #print("Request received:")
     #print(request_data)
-
+    try:
+        with open("project.html","r") as html_file:
+            html_content = html_file.read()
+    except FileNotFoundError:
+        html_content = "<html><body><h1>Error 404</h1><p>File not found.</p></body></html>"
+    
     # Simple HTTP response (an HTTP 200 OK response)
-    response = """HTTP/1.1 200 OK
+    response = f"""HTTP/1.1 200 OK
 Content-Type: text/html
 
-    <html>
-    <body>
-    <h1> Hello, World! </h1> You have connected to the Python socket server.
-    </body>
-    </html>
+{html_content}
 """
 
     # Send the HTTP response to the client
